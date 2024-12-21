@@ -6,10 +6,10 @@ module mealy_fsm(input logic clk, reset, n, d,output logic q);
     always_comb begin
         case (state)
             zero: begin
-                if (D) begin
+                if (d) begin
                     next_state = ten;
                     next_open = 0;
-                end else if (N) begin
+                end else if (n) begin
                     next_state = five;
                     next_open = 0;
                 end else begin
@@ -18,10 +18,10 @@ module mealy_fsm(input logic clk, reset, n, d,output logic q);
                 end
             end
             five: begin
-                if (D) begin
+                if (d) begin
                     next_state = fifteen;
                     next_open = 1;
-                end else if (N) begin
+                end else if (n) begin
                     next_state = ten;
                     next_open = 0;
                 end else begin
@@ -30,10 +30,10 @@ module mealy_fsm(input logic clk, reset, n, d,output logic q);
                 end
             end
             ten: begin
-                if (D) begin
+                if (d) begin
                     next_state = fifteen;
                     next_open = 1;
-                end else if (N) begin
+                end else if (n) begin
                     next_state = fifteen;
                     next_open = 1;
                 end else begin
@@ -42,7 +42,7 @@ module mealy_fsm(input logic clk, reset, n, d,output logic q);
                 end
             end
             fifteen: begin
-                if (Reset) begin
+                if (reset) begin
                     next_state = zero;
                     next_open = 0;
                 end else begin
@@ -57,8 +57,8 @@ module mealy_fsm(input logic clk, reset, n, d,output logic q);
         endcase
     end
 
-    always_ff @(posedge Clk) begin
-        if (Reset) begin
+    always_ff @(posedge clk) begin
+        if (reset) begin
             state <= zero;
             open <= 0;
         end else begin
