@@ -10,7 +10,7 @@ module counter_tb;
   initial
     begin
       clk = 0;
-      always #5 clk = ~clk;
+      forever #5 clk = ~clk;
     end
   
   initial
