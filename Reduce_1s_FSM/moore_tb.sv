@@ -4,7 +4,7 @@ module fsm_tb;
   reg clk, in;
   wire out;
   
-  fsm DUT(.clk(clk), .in(in), .out(out));
+  moore_fsm DUT(.clk(clk), .in(in), .out(out));
   
   initial
     begin

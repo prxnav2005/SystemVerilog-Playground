@@ -1,5 +1,5 @@
 // Code your design here
-module fsm(input logic clk, in, output logic out);
+module moore_fsm(input logic clk, in, output logic out);
   parameter logic [1:0] zero = 2'b00, one1 = 2'b01, two1s = 2'b10; 
   logic [1:0] state, next_state;
   
